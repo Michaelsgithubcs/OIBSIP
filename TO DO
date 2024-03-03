@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do App</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        flex: 1;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 8px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .task-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .task {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+
+    .task input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    .task .actions button {
+        margin-left: 5px;
+        cursor: pointer;
+        background-color: red;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        color: white;
+    }
+
+    .task .actions button.edit-icon {
+        background-color: transparent;
+        color: black;
+    }
+
+    .task .actions button.delete-icon {
+        background-color: transparent;
+        color: white;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>To-Do App</h1>
+    <div class="input-container">
+        <input type="text" id="taskTitle" placeholder="Enter task title">
+        <input type="text" id="taskDescription" placeholder="Enter task description">
+        <button onclick="addTask()">+</button>
+    </div>
+    <h2>Pending Tasks</h2>
+    <ul class="task-list" id="pendingTasks">
+        <!-- Tasks will be added here -->
+    </ul>
+    <h2>Completed Tasks</h2>
+    <ul class="task-list" id="completedTasks">
+        <!-- Completed tasks will be added here -->
+    </ul>
+</div>
+
+<script>
+    function addTask() {
+        var taskTitleInput = document.getElementById('taskTitle');
+        var taskDescriptionInput = document.getElementById('taskDescription');
+        var taskTitle = taskTitleInput.value.trim();
+        var taskDescription = taskDescriptionInput.value.trim();
+        if (taskTitle === '') {
+            alert('Please enter a task title.');
+            return;
+        }
+
+        var task = document.createElement('li');
+        task.className = 'task';
+        task.innerHTML = `
+            <input type="checkbox" onchange="toggleTask(this)">
+            <strong>${taskTitle}</strong><br>
+            <span>${taskDescription}</span>
+            <div class="actions">
+                <button class="edit-icon" onclick="editTask(this)">✏️</button>
+                <button class="delete-icon" onclick="deleteTask(this)">❌</button>
+            </div>
+        `;
+
+        document.getElementById('pendingTasks').appendChild(task);
+        taskTitleInput.value = '';
+        taskDescriptionInput.value = '';
+    }
+
+    function toggleTask(checkbox) {
+        var task = checkbox.parentNode;
+        var listId = checkbox.checked ? 'completedTasks' : 'pendingTasks';
+        document.getElementById(listId).appendChild(task);
+    }
+
+    function editTask(button) {
+        var task = button.parentNode.parentNode;
+        var taskTitle = task.querySelector('strong');
+        var taskDescription = task.querySelector('span');
+        var newTaskTitle = prompt('Enter new task title:', taskTitle.textContent);
+        if (newTaskTitle !== null) {
+            taskTitle.textContent = newTaskTitle.trim();
+            var newTaskDescription = prompt('Enter new task description:', taskDescription.textContent);
+            if (newTaskDescription !== null) {
+                taskDescription.textContent = newTaskDescription.trim();
+            }
+        }
+    }
+
+    function deleteTask(button) {
+        var task = button.parentNode.parentNode;
+        task.parentNode.removeChild(task);
+    }
+</script>
+</body>
+</html>
