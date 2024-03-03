@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admiring Michael Jackson</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, p {
+        text-align: center;
+    }
+
+    .image-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Admiring Michael Jackson</h1>
+    <p>Michael Jackson was an iconic figure who left an indelible mark on the world of music and entertainment. Born on August 29, 1958, in Gary, Indiana, Michael captivated audiences with his unparalleled talent, electrifying performances, and groundbreaking music.</p>
+    <p>He was not only a gifted singer, songwriter, and dancer but also a humanitarian who used his platform to advocate for important causes and spread messages of love and unity.</p>
+    <p>Tragically, Michael Jackson passed away on June 25, 2009, leaving behind a legacy that continues to inspire and influence artists and fans around the globe.</p>
+    <div class="image-container">
+        <img src="mike.jpg" alt="Michael Jackson">
+    </div>
+</div>
+</body>
+</html>
