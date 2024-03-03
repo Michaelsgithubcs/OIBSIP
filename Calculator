@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f7;
+    }
+
+    .calculator {
+        width: 300px;
+        margin: 100px auto;
+        background-color: #333;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .screen {
+        color: white;
+        font-size: 36px;
+        text-align: right;
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #333;
+        border: none;
+        width: 100%;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .button {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        margin: 5px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        background-color: #e0e0e0;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #bdbdbd;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="screen" class="screen" disabled>
+    <div class="row">
+        <button class="button" onclick="clearScreen()">C</button>
+        <button class="button" onclick="deleteChar()">x</button>
+        <button class="button" onclick="appendChar('/')">÷</button>
+        <button class="button" onclick="appendChar('*')">←</button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendChar('7')">7</button>
+        <button class="button" onclick="appendChar('8')">8</button>
+        <button class="button" onclick="appendChar('9')">9</button>
+        <button class="button" onclick="appendChar('-')">-</button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendChar('4')">4</button>
+        <button class="button" onclick="appendChar('5')">5</button>
+        <button class="button" onclick="appendChar('6')">6</button>
+        <button class="button" onclick="appendChar('+')">+</button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendChar('1')">1</button>
+        <button class="button" onclick="appendChar('2')">2</button>
+        <button class="button" onclick="appendChar('3')">3</button>
+        <button class="button" onclick="calculate()">=</button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendChar('0')">0</button>
+		<button class="button" onclick="appendChar('( ')">(</button>
+		<button class="button" onclick="appendChar(')')">)</button>
+        <button class="button" onclick="appendChar('.')">.</button>
+    </div>
+</div>
+
+<script>
+    function clearScreen() {
+        document.getElementById('screen').value = '';
+    }
+
+    function deleteChar() {
+        let screenValue = document.getElementById('screen').value;
+        document.getElementById('screen').value = screenValue.slice(0, -1);
+    }
+
+    function appendChar(char) {
+        document.getElementById('screen').value += char;
+    }
+
+    function calculate() {
+        let expression = document.getElementById('screen').value;
+        let result = eval(expression);
+        document.getElementById('screen').value = result;
+    }
+</script>
+</body>
+</html>
