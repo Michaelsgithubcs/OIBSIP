@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5; /* Background color used before */
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    input[type="number"] {
+        width: 100px;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    select {
+        padding: 8px;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    #result {
+        margin-top: 20px;
+    }
+
+    h1 {
+        font-family: 'Pacifico', cursive;
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Temperature Converter</h1> <!-- Title in cool font -->
+    <input type="number" id="temperatureInput" placeholder="Enter temperature">
+    <select id="unitSelect">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <div id="result"></div>
+</div>
+<footer>
+    &copy; Michael
+</footer>
+
+<script>
+    function convertTemperature() {
+        const temperatureInput = document.getElementById('temperatureInput').value;
+        const unitSelect = document.getElementById('unitSelect').value;
+       
